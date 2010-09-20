@@ -1,0 +1,24 @@
+body {
+	font: 22px/38px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	color: #333;
+	background-color: #f2f2f2;
+}
+
+#wrap{
+	width: 600px;
+	margin: 30px;
+}
+
+h1{
+	margin-bottom: 30px;
+}
+
+span.mscript{
+	color: #f30;
+	font: 18px "Courier New", Courier, mono;
+}
+
+ol{
+	list-style-type: lower-roman;
+	list-style-position: inside;
+}

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang ="en">
+<head>
+	<title>Onager</title>
+	<meta charset="UTF-8">
+
+	<link rel="stylesheet" type="text/css" href="css/reset.css" /> 
+	<link rel="stylesheet" type="text/css" href="css/main.css" />
+</head>
+<body>
+
+	<div id="wrap">
+	<h1>Welcome to Onager</h1>
+	<ol>
+	<li>Go to http://<%= @hostname %>:41508 on your mobile device</li>
+	<li>Copy this:<br /> 
+	<span class="mscript">javascript:(function(){window.location='http://<%= @hostname %>:41508/open/'+window.location.href;})();</span></li>
+	<li>Save this as a bookmarklet</li>
+	<li>When browsing, click on the bookmarklet to send the page to your desktop browser</li>
+	</div>
+</body>
+</html>
