@@ -2,6 +2,7 @@
   require 'sinatra'
   require 'launchy'
   require 'socket'
+  require 'yaml'
 
   configure do
     set :port, 41508
