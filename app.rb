@@ -52,7 +52,7 @@
   
   get '/clients' do
     protected!
-    @ukey = options.ukey
+    @ukey = UKEY
     @hostname = Socket.gethostname.downcase
     erb :clients
   end
