@@ -11,7 +11,7 @@
     
     set :username, @config['user']
     set :password, @config['pass']
-    set :ukey, @config['ukey']
+    UKEY = @config['ukey']
     
     enable :sessions
   end
@@ -43,7 +43,7 @@
     erb :home
   end
   
-  get "/open/:ukey/*" do
+  get "/open/#{UKEY}/*" do
     protected!
     Launchy.open("#{params[:splat]}")
     redirect params[:splat]
