@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang ="en">
+<head>
+	<title>Onager</title>
+	<meta charset="UTF-8">
+
+	<link rel="stylesheet" type="text/css" href="css/reset.css" /> 
+	<link rel="stylesheet" type="text/css" href="css/main.css" />
+</head>
+<body>
+	<div id="wrap">
+	<h1>Welcome to Onager</h1>
+	<p>Your Unique Key is <span class="mscript"><%= @ukey %></span> and can be changed in the <span class="mscript">conf/config.yml</span> file.</p>
+	<p>Your bookmarklet URL is: <span class="mscript">javascript:(function(){window.location='http://<%= @hostname %>:41508/open/<%= @ukey %>/'+ window.location.href;})();</span></p>
+	</div>
+</body>
+</html>

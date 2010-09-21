@@ -2,18 +2,36 @@
   require 'sinatra'
   require 'launchy'
   require 'socket'
-  
+
   configure do
     set :port, 41508
+    
+    @config = YAML.load_file('conf/config.yaml')
+    
+    set :username, @config['user']
+    set :password, @config['pass']
+    set :ukey, @config['ukey']
+    
+    enable :sessions
   end
+  
   
   before do
 
   end
   
   helpers do
-    def keygen
-      rand.to_s[2..5].to_i
+    
+    def protected!
+      unless authorized?
+        response['WWW-Authenticate'] = %(Basic realm="Testing HTTP Auth")
+        throw(:halt, [401, "Not authorized\n"])
+      end
+    end
+    
+    def authorized?
+      @auth ||=  Rack::Auth::Basic::Request.new(request.env)
+      @auth.provided? && @auth.basic? && @auth.credentials && @auth.credentials == [options.username, options.password]
     end
 
   end
@@ -24,21 +42,18 @@
     erb :home
   end
   
-  get '/open/*' do
+  get "/open/:ukey/*" do
+    protected!
     Launchy.open("#{params[:splat]}")
     redirect params[:splat]
   end
   
-  get '/authorize' do
-    # endpoint to get key generated on desktop side
-  end
-  
-  get '/authorize/client' do
-    # url where the mobile device will input the key
-  end
   
   get '/clients' do
-    # manage existing mobile devices
+    protected!
+    @ukey = options.ukey
+    @hostname = Socket.gethostname.downcase
+    erb :clients
   end
 
   

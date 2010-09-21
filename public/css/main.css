@@ -5,8 +5,9 @@ body {
 }
 
 #wrap{
-	width: 600px;
+	width: 800px;
 	margin: 30px;
+	white-space: normal;
 }
 
 h1{
@@ -21,4 +22,9 @@ span.mscript{
 ol{
 	list-style-type: lower-roman;
 	list-style-position: inside;
+}
+
+a, a:visited{
+	color: #f30;
+	text-decoration: none;
 }
